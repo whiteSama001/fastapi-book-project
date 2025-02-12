@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Server
+      - name: Deploy to Azure
         run: |
-          ssh user@server-ip "cd /c/Users/White_sama/fastapi-book-project && git pull origin main && systemctl restart fastapi.service"
+          az webapp deployment source config-zip \
+          --resource-group public-info-api_group \
+          --name public-info-api \
+          --src fastapi.zip
