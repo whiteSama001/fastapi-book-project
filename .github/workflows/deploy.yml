@@ -12,6 +12,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Create ZIP Archive
+        run: zip -r fastapi-book-project.zip . 
+
       - name: Log in to Azure
         uses: azure/login@v1
         with:
